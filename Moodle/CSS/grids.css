@@ -72,13 +72,21 @@ a {
 }
 
 .cube {
+	margin: 10px;
 	height: 10vh;
 	width: 10vh;
-	background-color: rgb(197, 17, 17);
+	background-color: rgb(194, 14, 14);
 }
 
-.cube:hover {
-	cursor: pointer;
+.rectangle {
+	margin: 10px;
+	height: 10vh;
+	width: 10vh;
+	background-color: rgba(248, 245, 70, 0.788);
+}
+
+.blue {
+	background-color: rgb(56, 66, 204);
 }
 
 #quiz {
@@ -90,4 +98,16 @@ a {
 #quiz li:hover {
 	cursor: pointer;
 	font-weight: bold;
+}
+
+#context-menu:hover {
+	cursor: pointer;
+}
+
+#double-click:hover {
+	cursor: pointer;
+}
+
+#key-down {
+	outline: none;
 }

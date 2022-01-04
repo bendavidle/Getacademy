@@ -8,7 +8,6 @@ function checkWin(el) {
 
 	for (let i = 0; i < quizList.length; i++) {
 		const element = quizList[i];
-		console.log(element);
 		element.style.fontWeight = "400";
 	}
 
@@ -20,6 +19,7 @@ function checkWin(el) {
 
 		if (winCheck.tagName == "H3") {
 			winCheck.innerHTML = "Correct!";
+			winCheck.style.fontWeight = "bold";
 			winCheck.className = "correct";
 		} else {
 			quiz.appendChild(winElement);
@@ -29,8 +29,8 @@ function checkWin(el) {
 		winElement.classList.add("wrong");
 
 		if (winCheck.tagName == "H3") {
-			console.log(winCheck);
 			winCheck.innerHTML = "Wrong!";
+			winCheck.style.fontWeight = "bold";
 			winCheck.className = "wrong";
 		} else {
 			quiz.appendChild(winElement);
@@ -43,5 +43,4 @@ for (let i = 0; i < quizList.length; i++) {
 	element.addEventListener("click", function () {
 		checkWin(this);
 	});
-	console.log(element.innerHTML);
 }
