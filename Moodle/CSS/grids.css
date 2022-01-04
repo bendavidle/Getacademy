@@ -12,6 +12,14 @@ a {
 	color: #fff;
 }
 
+.correct {
+	color: green;
+}
+
+.wrong {
+	color: red;
+}
+
 .wrapper {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
@@ -61,4 +69,25 @@ a {
 	grid-row: 3 / 4;
 	background-color: #1f1f1f;
 	padding: 0 10px 0 10px;
+}
+
+.cube {
+	height: 10vh;
+	width: 10vh;
+	background-color: rgb(197, 17, 17);
+}
+
+.cube:hover {
+	cursor: pointer;
+}
+
+#quiz {
+	margin-top: 0;
+	float: left;
+	list-style: none;
+}
+
+#quiz li:hover {
+	cursor: pointer;
+	font-weight: bold;
 }
