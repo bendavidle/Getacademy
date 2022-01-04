@@ -20,8 +20,6 @@ contextMenu.addEventListener("contextmenu", function () {
 });
 
 keyDown.addEventListener("keydown", function (e) {
-	let keyElement = document.createElement("H1");
-
+	let keyElement = keyDown.children[0];
 	keyElement.innerHTML = e.key;
-	keyDown.appendChild(keyElement);
 });

@@ -110,4 +110,16 @@ a {
 
 #key-down {
 	outline: none;
+	display: grid;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+
+#key-down span {
+	place-self: center;
+	font-weight: bold;
+	padding-bottom: 10px;
+	font-size: 20px;
+	margin: 0;
+	grid-column: 2 / span 1;
+	grid-row: 2 / span 1;
 }
