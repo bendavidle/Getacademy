@@ -6,13 +6,9 @@ cube.addEventListener("dblclick", function () {
 	let currentCubeColor = getComputedStyle(cube).backgroundColor;
 	let cubeSecondColor = "rgb(255, 255, 255)";
 
-	console.log(currentCubeColor);
+	cube.style.backgroundColor = currentCubeColor !== cubeSecondColor ? cubeSecondColor : "rgb(194, 14, 14)";
 
-	if (currentCubeColor !== cubeSecondColor) {
-		cube.style.backgroundColor = cubeSecondColor;
-	} else {
-		cube.style.backgroundColor = "rgb(194, 14, 14)";
-	}
+	console.log("test");
 });
 
 contextMenu.addEventListener("contextmenu", function () {
