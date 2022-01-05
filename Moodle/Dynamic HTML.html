@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/grids.css" />
+		<script defer src="js/dynamicdiv.js"></script>
+		<title>CodeLock</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<p>Welcome to my site!</p>
+			</header>
+			<div class="sidebar">
+				<ul>
+					<li><a href="grids.html">Home</a></li>
+					<li><a href="About.html">About</a></li>
+					<li><a href="Contact.html">Contact</a></li>
+					<li><a href="SVG.html">SVG</a></li>
+					<li><a href="javascript.html">Javascript</a></li>
+					<li><a href="Codelock.html">CodeLock</a></li>
+					<li style="font-weight: bold"><a href="#">Dynamic HTML</a></li>
+				</ul>
+			</div>
+			<div class="content">
+				<h2>Dynamic HTML</h2>
+				<div id="dynamichtml">
+					<h3>Div Inner Text</h3>
+					<h3>Div Color</h3>
+					<h3>Div Border</h3>
+					<h3>Div Size</h3>
+					<h3>Div Radius</h3>
+					<input type="text" name="textInput" id="textInput" value="Text here!" />
+					<select name="colorSelection" id="colorSelection">
+						<option selected value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="blue">Blue</option>
+					</select>
+					<select name="borderSelection" id="borderSelection">
+						<option selected value="none">None</option>
+						<option value="black">Black</option>
+						<option value="grey">Grey</option>
+					</select>
+					<input type="range" name="sizeSlider" id="sizeSlider" step="10" min="100" max="500" />
+					<input type="range" name="borderRadius" id="borderRadius" step="10" min="0" max="150" />
+				</div>
+				<div id="dynamicDiv">
+					<p id="dynamicText"></p>
+				</div>
+				<p id="divHtml"></p>
+			</div>
+			<footer class="footer">
+				<p style="float: left">Made by Ben David</p>
+				<p style="float: right">GetAcademy 2022</p>
+			</footer>
+		</div>
+	</body>
+</html>
