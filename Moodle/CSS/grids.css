@@ -59,7 +59,7 @@ a {
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
 	background-color: #3f3f3f;
-	padding: 0 25px 0 25px;
+	padding: 0 25px 2vh 25px;
 
 	text-align: left;
 }
@@ -122,4 +122,14 @@ a {
 	margin: 0;
 	grid-column: 2 / span 1;
 	grid-row: 2 / span 1;
+}
+
+#table {
+	margin-left: 10px;
+	height: 10vh;
+	width: 10vh;
+	float: left;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
 }
