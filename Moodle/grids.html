@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/grids.css" />
 		<title>Home</title>
 	</head>
-	<body>
+	<body onload="bodyLoad()">
 		<div class="wrapper">
 			<header class="header">
 				<p>Welcome to my site!</p>
@@ -22,13 +22,23 @@
 					<li><a href="Codelock.html">CodeLock</a></li>
 				</ul>
 			</div>
-			<div class="content">
+			<div id="main" class="content">
 				<h2>Home</h2>
+				<p id="a"></p>
+				<p id="b"></p>
+				<img src="https://eskipaper.com/images/large-2.jpg" alt="" />
 			</div>
 			<footer class="footer">
 				<p style="float: left">Made by Ben David</p>
 				<p style="float: right">GetAcademy 2022</p>
 			</footer>
 		</div>
+		<script>
+			document.getElementById("a").innerText = new Date().toTimeString();
+
+			function bodyLoad() {
+				document.getElementById("b").innerText = new Date().toTimeString();
+			}
+		</script>
 	</body>
 </html>
