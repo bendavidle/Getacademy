@@ -65,6 +65,7 @@ img {
 	background-color: #3f3f3f;
 	padding: 0 25px 2vh 25px;
 	text-align: left;
+	overflow-y: auto;
 }
 
 .footer {

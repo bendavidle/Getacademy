@@ -21,7 +21,6 @@ keyDown.addEventListener("keydown", function (e) {
 
 for (let i = 0; i < table.children.length; i++) {
 	const row = table.children[i];
-	console.log(row);
 	for (let i = 0; i < row.children.length; i++) {
 		const cell = row.children[i];
 		cell.addEventListener("mouseover", function () {

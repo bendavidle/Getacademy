@@ -24,7 +24,6 @@ function showDiv() {
 	if (borderSelection.value == "none") {
 		dynamicDiv.style.border = "thick none #fff";
 	} else {
-		console.log("test");
 		dynamicDiv.style.border = "thick solid " + borderSelection.value;
 	}
 
