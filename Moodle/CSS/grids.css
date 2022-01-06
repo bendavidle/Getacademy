@@ -86,7 +86,7 @@ img {
 	margin: 10px;
 	height: 10vh;
 	width: 10vh;
-	background-color: rgba(248, 245, 70, 0.788);
+	background-color: rgba(9, 255, 0, 0.788);
 }
 
 .blue {
@@ -199,4 +199,39 @@ img {
 #dynamicDiv p {
 	text-align: center;
 	vertical-align: middle;
+}
+
+#div-select div {
+	margin: 10px;
+	height: 10vh;
+	width: 10vh;
+	background-color: rgba(9, 255, 0, 0.788);
+}
+
+.border {
+	border: 5px solid red;
+}
+
+.yellow {
+	background-color: yellow !important;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.padding {
+	padding: 10px;
+}
+
+.margin {
+	margin: 10px;
+}
+
+div.selected::before {
+	content: "🡆";
+}
+
+div.selected::after {
+	content: "🡄";
 }
