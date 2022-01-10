@@ -169,6 +169,7 @@ img {
 	font-size: 30px;
 	text-align: center;
 	line-height: 17vh;
+	user-select: none;
 }
 
 #codelock span:hover {
