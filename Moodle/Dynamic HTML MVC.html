@@ -5,16 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/grids.css" />
-		<title>Home</title>
+		<script defer src="js/dynamicdivmvc.js"></script>
+		<title>Dynamic HTML</title>
 	</head>
-	<body onload="bodyLoad()">
+	<body>
 		<div class="wrapper">
 			<header class="header">
 				<p>Welcome to my site!</p>
 			</header>
 			<div class="sidebar">
 				<ul>
-					<li style="font-weight: bold"><a href="#">Home</a></li>
+					<li><a href="grids.html">Home</a></li>
 					<li><a href="About.html">About</a></li>
 					<li><a href="Contact.html">Contact</a></li>
 					<li><a href="SVG.html">SVG</a></li>
@@ -22,26 +23,17 @@
 					<li><a href="More Javascript.html">More Javascript</a></li>
 					<li><a href="Codelock.html">CodeLock</a></li>
 					<li><a href="Dynamic HTML.html">Dynamic HTML</a></li>
-					<li><a href="Dynamic HTML MVC.html">Dynamic HTML MVC</a></li>
+					<li style="font-weight: bold"><a href="#">Dynamic HTML MVC</a></li>
 				</ul>
 			</div>
-			<div id="main" class="content">
-				<h2>Home</h2>
-				<p id="a"></p>
-				<p id="b"></p>
-				<img src="https://eskipaper.com/images/large-2.jpg" alt="" />
+			<div id="content" class="content">
+				<h2>Dynamic HTML</h2>
+				<div id="dynamichtml"></div>
 			</div>
 			<footer class="footer">
 				<p style="float: left">Made by Ben David</p>
 				<p style="float: right">GetAcademy 2022</p>
 			</footer>
 		</div>
-		<script>
-			document.getElementById("a").innerText = new Date().toTimeString();
-
-			function bodyLoad() {
-				document.getElementById("b").innerText = new Date().toTimeString();
-			}
-		</script>
 	</body>
 </html>

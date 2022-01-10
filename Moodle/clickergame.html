@@ -45,10 +45,7 @@
 			updateView();
 			function updateView() {
 				var smiley = smileyIndex == 0 ? "😀" : "😁";
-				var juks = "";
-				if (cheater) {
-					juks = "Du har jukset!";
-				}
+				var juks = cheater ? "Du har jukset!" : "";
 
 				document.getElementById("app").innerHTML = `
                 <div id="image" onclick="doClick()">${smiley}</div>

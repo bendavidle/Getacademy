@@ -192,6 +192,19 @@ img {
 	margin-bottom: 2vh;
 }
 
+#dynamichtmlmvc {
+	display: grid;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+	background-color: rgb(39, 39, 39);
+
+	max-width: 100%;
+	margin-bottom: 2vh;
+}
+
+#dynamichtmlmvc button {
+	grid-column: 1 / 4;
+}
+
 #dynamichtml h3 {
 	text-align: center;
 }
