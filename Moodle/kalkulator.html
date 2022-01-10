@@ -74,13 +74,14 @@
 
 				if (element.tagName === "DIV") {
 					if (classList.contains("operation") || classList.contains("digit")) {
-						let result = (input += content);
-						renderCalc(result);
+						input += content;
+						renderCalc(input);
 					} else if (classList.contains("clear")) {
+						input = "";
 						renderCalc("");
 					} else if (classList.contains("equals")) {
-						let result = calculate(input);
-						renderCalc(result);
+						input = calculate(input);
+						renderCalc(input);
 					}
 				}
 			}
