@@ -38,10 +38,10 @@
 			var input = "";
 
 			//View
-			function renderCalc() {
+			function renderCalc(result) {
 				let calculator = document.getElementById("calculator");
 				let view = `
-			                 <div id="resultBox" class="resultBox">${input}</div>
+			                 <div id="resultBox" class="resultBox">${result}</div>
 			                 <div class="firstInRow digit">7</div>
 			                 <div class="digit">8</div>
 			                 <div class="digit">9</div>
@@ -74,14 +74,13 @@
 
 				if (element.tagName === "DIV") {
 					if (classList.contains("operation") || classList.contains("digit")) {
-						input += content;
-						renderCalc();
+						let result = (input += content);
+						renderCalc(result);
 					} else if (classList.contains("clear")) {
-						input = "";
-						renderCalc();
+						renderCalc("");
 					} else if (classList.contains("equals")) {
-						input = calculate(input);
-						renderCalc();
+						let result = calculate(input);
+						renderCalc(result);
 					}
 				}
 			}
@@ -91,7 +90,7 @@
 				return eval(calculation);
 			}
 
-			renderCalc();
+			renderCalc(input);
 		</script>
 	</body>
 </html>
