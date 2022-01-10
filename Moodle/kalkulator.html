@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title>Kalkulator</title>
+		<style type="text/css">
+			div div {
+				float: left;
+				background-color: beige;
+				width: 50px;
+				height: 50px;
+				padding: 10px;
+				margin: 10px;
+				text-align: center;
+				vertical-align: middle;
+				font-family: helvetica;
+				font-size: 200%;
+				border: #bbbbaa solid 4px;
+				border-radius: 10px;
+			}
+
+			div.resultBox {
+				width: 344px;
+				text-align: right;
+			}
+
+			div.firstInRow {
+				clear: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="calculator"></div>
+
+		<script type="text/javascript">
+			//Model
+			var input = "";
+
+			//View
+			function renderCalc() {
+				let calculator = document.getElementById("calculator");
+				let view = `
+			                 <div id="resultBox" class="resultBox">${input}</div>
+			                 <div class="firstInRow digit">7</div>
+			                 <div class="digit">8</div>
+			                 <div class="digit">9</div>
+			                 <div class="operation">÷</div>
+
+			                 <div class="firstInRow digit">4</div>
+			                 <div class="digit">5</div>
+			                 <div class="digit">6</div>
+			                 <div class="operation">×</div>
+
+			                 <div class="firstInRow digit">1</div>
+			                 <div class="digit">2</div>
+			                 <div class="digit">3</div>
+			                 <div class="operation">-</div>
+
+			                 <div class="firstInRow digit">0</div>
+			                 <div class="clear">C</div>
+			                 <div class="equals">=</div>
+			                 <div class="operation">+</div>
+			             `;
+				calculator.onclick = handleClickEvent;
+				calculator.innerHTML = view;
+			}
+
+			//Controller
+			function handleClickEvent(e) {
+				let element = e.target;
+				let content = element.textContent;
+				let classList = element.classList;
+
+				if (element.tagName === "DIV") {
+					if (classList.contains("operation") || classList.contains("digit")) {
+						input += content;
+						renderCalc();
+					} else if (classList.contains("clear")) {
+						input = "";
+						renderCalc();
+					} else if (classList.contains("equals")) {
+						input = calculate(input);
+						renderCalc();
+					}
+				}
+			}
+
+			function calculate(calculation) {
+				calculation = calculation.replace("×", "*").replace("÷", "/");
+				return eval(calculation);
+			}
+
+			renderCalc();
+		</script>
+	</body>
+</html>
