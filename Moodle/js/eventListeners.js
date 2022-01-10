@@ -3,13 +3,19 @@ const contextMenu = document.getElementById("context-menu");
 const keyDown = document.getElementById("key-down");
 const table = document.getElementById("table").children[0];
 
+//Console.log cube er variablene på toppen
 cube.addEventListener("dblclick", function () {
+	/*
 	let currentCubeColor = getComputedStyle(cube).backgroundColor;
 	let cubeSecondColor = "rgb(255, 255, 255)";
 
 	cube.style.backgroundColor = currentCubeColor !== cubeSecondColor ? cubeSecondColor : "rgb(194, 14, 14)";
+	*/
+
+	console.log("Hei");
 });
 
+//andre events
 contextMenu.addEventListener("contextmenu", function () {
 	alert("Right Click! :D");
 });
