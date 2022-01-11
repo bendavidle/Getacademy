@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="content"></div>
+
+		<ul>
+			<li>Oppgave: Legg til et fyll til</li>
+			<li>Oppgave: Legg til en ting til i pizza-bestillingen, for eksempel firkantet eller rund pizza</li>
+		</ul>
+		<script>
+			var isBunnFilled;
+			var selectedBunn;
+			var isFyllFilled;
+			var selectedFyll;
+			var isStrFilled;
+			var selectedStr;
+			var isShapeFilled;
+			var selectedShape;
+			var canOrder;
+
+			show();
+			function show() {
+				const app = document.getElementById("content");
+				app.innerHTML = `
+                    <p>Ferdighet 9f - Valgsetninger - Sammenligne flere ting på en gang (og og eller sammen)</p>
+                    <h3>Pizza-bestilling</h3>
+                    <div id="info" style="padding-bottom: 20px">
+                        ${checkFilled()}
+                    </div>
+
+                    Bunn: <input ${selectedBunn == "tykk" ? "checked" : ""} value="tykk" id="tykkBunn" type="radio" name="bunn" onchange="onSelect(this)"/>Tykk <input ${
+					selectedBunn == "tynn" ? "checked" : ""
+				}  value="tynn" id="tynnBunn" type="radio" name="bunn" onchange="onSelect(this)" />Tynn <br />
+
+                    Fyll: <input ${selectedFyll == "taco" ? "checked" : ""}  value="taco" id="fyllTaco" type="radio" name="fyll" onchange="onSelect(this)" />Taco <input ${
+					selectedFyll == "kylling" ? "checked" : ""
+				}  value="kylling" id="fyllKylling" type="radio" name="fyll" onchange="onSelect(this)" />Kylling <input ${selectedFyll == "pepperoni" ? "checked" : ""} value="pepperoni" id="fyllPepperoni" type="radio" name="fyll" onchange="onSelect(this)" />Pepperoni
+                    <input ${selectedFyll == "ananas" ? "checked" : ""} value="ananas" id="fyllPepperoni" type="radio" name="fyll" onchange="onSelect(this)" />Ananas<br />
+
+                    Størrelse: <input ${selectedStr == "stor" ? "checked" : ""}  value="stor" id="stor" type="radio" name="str" onchange="onSelect(this)" />Stor <input ${
+					selectedStr == "middels" ? "checked" : ""
+				}  value="middels" id="middels" type="radio" name="str" onchange="onSelect(this)" />Middels <input ${selectedStr == "liten" ? "checked" : ""} value="liten" id="liten" type="radio" name="str" onchange="onSelect(this)" />Liten<br />
+
+                    Shape: <input ${selectedShape == "firkant" ? "checked" : ""}  value="firkant" id="stor" type="radio" name="shape" onchange="onSelect(this)" />Firkantet <input ${
+					selectedShape == "rund" ? "checked" : ""
+				}  value="rund" id="middels" type="radio" name="shape" onchange="onSelect(this)" />Rund <br />
+
+                    <button id="bestill" ${!canOrder ? "disabled" : ""} onclick="alert('Bestilt!');">Bestill</button>
+                `;
+			}
+
+			function onSelect(selected) {
+				let selectedName = selected.name;
+
+				if (selectedName == "bunn") {
+					selectedBunn = selected.value;
+					isBunnFilled = true;
+				} else if (selectedName == "fyll") {
+					selectedFyll = selected.value;
+					isFyllFilled = true;
+				} else if (selectedName == "str") {
+					selectedStr = selected.value;
+					isStrFilled = true;
+				} else if (selectedName == "shape") {
+					selectedShape = selected.value;
+					isShapeFilled = true;
+				}
+
+				console.log(selected.value);
+				show();
+			}
+
+			function checkFilled() {
+				if (!isBunnFilled && !isFyllFilled && !isStrFilled && !isShapeFilled) {
+					return "Gjør et valg på hver linje: ";
+				} else if (isBunnFilled && isFyllFilled && isStrFilled && isShapeFilled) {
+					canOrder = true;
+					return "Du har fylt ut alt og er klar til å bestille";
+				} else {
+					let info = "Du har ikke valg: ";
+
+					if (!isBunnFilled) {
+						info += "<li>bunn</li>";
+					}
+					if (!isFyllFilled) {
+						info += "<li>fyll</li>";
+					}
+					if (!isStrFilled) {
+						info += "<li>størrelse</li>";
+					}
+					if (!isShapeFilled) {
+						info += "<li>shape</li>";
+					}
+					return info;
+				}
+			}
+		</script>
+	</body>
+</html>
