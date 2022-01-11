@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Div Color</title>
+		<style>
+			.rectangle {
+				height: 15vh;
+				width: 15vh;
+				margin-top: 2vw;
+			}
+			.center {
+				line-height: 15vh;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content" class="content"></div>
+		<script>
+			var color = "black";
+			var textColor = "white";
+
+			show();
+			function show() {
+				const app = document.getElementById("content");
+				app.innerHTML = `
+                    <select id="color-select" onchange="colorChange()">
+                        <option ${color == "black" ? "selected" : ""} value="black">Black</option>
+                        <option ${color == "darkblue" ? "selected" : ""} value="darkblue">Dark Blue</option>
+                        <option ${color == "lightgray" ? "selected" : ""} value="lightgray">Light Gray</option>
+                        <option ${color == "lightgreen" ? "selected" : ""} value="lightgreen">Light Green</option>
+                        <option ${color == "lightred" ? "selected" : ""} value="lightred">Light Red</option>
+			        </select>
+                    <div class="rectangle" id="selectDiv" style="color: ${textColor}; background-color: ${color};"><p class="center">Hallo!</p></div>
+                `;
+			}
+
+			function colorChange() {
+				let selectedColor = document.getElementById("color-select").value;
+				color = selectedColor;
+
+				if (color == "darkblue" || color == "black") {
+					console.log("if");
+					textColor = "white";
+				} else {
+					textColor = "black";
+				}
+				console.log(color, textColor);
+				show();
+			}
+		</script>
+	</body>
+</html>
