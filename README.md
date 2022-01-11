@@ -2,10 +2,20 @@
 
 Forskjellige oppgaver osv for Getacademy
 
-[Homepage](https://bengetacademy.github.io/Getacademy/Moodle/grids.html)
+> [Homepage](https://bengetacademy.github.io/Getacademy/Moodle/grids.html)
 
-[Kalkulator med MVC](https://bengetacademy.github.io/Getacademy/Moodle/kalkulator.html)
+# MVC
 
-[Random Div](https://bengetacademy.github.io/Getacademy/Moodle/functions.html)
+Oppgaver med MVC
 
-[Clicker Game](https://bengetacademy.github.io/Getacademy/Moodle/clickergame.html)
+> [Kalkulator med MVC](https://bengetacademy.github.io/Getacademy/Moodle/kalkulator.html)
+>
+> [Clicker Game](https://bengetacademy.github.io/Getacademy/Moodle/clickergame.html)
+>
+> [Random Div](https://bengetacademy.github.io/Getacademy/Moodle/functions.html)
+>
+> ## If-Statements
+>
+> [Colored Div Select](https://bengetacademy.github.io/Getacademy/Moodle/colordiv.html)
+>
+> [Codelock](https://bengetacademy.github.io/Getacademy/Moodle/Codelock.html)
