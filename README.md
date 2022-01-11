@@ -19,3 +19,5 @@ Oppgaver med MVC
 > [Colored Div Select](https://bengetacademy.github.io/Getacademy/Moodle/colordiv.html)
 >
 > [Codelock](https://bengetacademy.github.io/Getacademy/Moodle/Codelock.html)
+>
+> [Ferdighet 9f](https://bengetacademy.github.io/Getacademy/Moodle/ferdighet9f.html)
