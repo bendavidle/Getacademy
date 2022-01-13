@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>QUnit Example</title>
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css" />
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+		<script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+		<script src="js/lib.js"></script>
+		<script>
+			QUnit.test("fix - 'terje'", function (assert) {
+				const actual = fixText("terje");
+				const expected = "Terje";
+				assert.equal(actual, expected);
+			});
+
+			QUnit.test("fix - 'terje '", function (assert) {
+				const actual = fixText("terje ");
+				const expected = "Terje";
+				assert.equal(actual, expected);
+			});
+
+			QUnit.test("fix - ' terje'", function (assert) {
+				const actual = fixText(" terje");
+				const expected = "Terje";
+				assert.equal(actual, expected);
+			});
+
+			QUnit.test("fix - ' terje '", function (assert) {
+				const actual = fixText(" terje ");
+				const expected = "Terje";
+				assert.equal(actual, expected);
+			});
+
+			QUnit.test("emailTest - 'asdlld.com'", function (assert) {
+				const actual = checkIfEmail("asdlld.com");
+				const expected = false;
+				assert.equal(actual, expected);
+			});
+
+			QUnit.test("emailTest - 'asdlld@asd.com'", function (assert) {
+				const actual = checkIfEmail("asdlld@asd.com");
+				const expected = true;
+				assert.equal(actual, expected);
+			});
+			QUnit.test("emailTest - 'a sdl ld@ asd.com '", function (assert) {
+				const actual = checkIfEmail("a sdl ld@ asd.com ");
+				const expected = false;
+				assert.equal(actual, expected);
+			});
+			QUnit.test("emailTest - 'as.dlld.@asd.com'", function (assert) {
+				const actual = checkIfEmail("as.dlld.@asd.com");
+				const expected = false;
+				assert.equal(actual, expected);
+			});
+			QUnit.test("emailTest - 'as.dlld@.asd.com'", function (assert) {
+				const actual = checkIfEmail("as.dlld@.asd.com");
+				const expected = false;
+				assert.equal(actual, expected);
+			});
+		</script>
+	</body>
+</html>
