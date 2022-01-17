@@ -147,9 +147,7 @@
 					board[index] = "x";
 					checkWin();
 
-					if (win == "x") {
-						console.log("X Winner!");
-					} else if (blankIndexes.length == 1 && win == "") {
+					if (blankIndexes.length == 1 && win == "") {
 						console.log("Its a tie!");
 						win = "tie";
 					} else {
@@ -168,9 +166,6 @@
 				if (win == "") {
 					board[blankIndex] = "o";
 					checkWin();
-					if (win == "o") {
-						console.log("O WInner!");
-					}
 				}
 				show();
 			}
