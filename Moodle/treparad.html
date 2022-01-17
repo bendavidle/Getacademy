@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title>Tre på rad</title>
+		<style type="text/css">
+			html,
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				display: grid;
+				justify-items: center;
+				align-items: center;
+			}
+
+			div {
+				user-select: none;
+			}
+
+			div.cell {
+				background-color: rgb(255, 255, 255);
+				border: 2px solid black;
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin: 2px;
+				font-size: 500%;
+				font-family: helvetica;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+			}
+
+			div.first {
+				clear: left;
+			}
+
+			div.coloro {
+				color: rgb(0, 136, 0);
+			}
+
+			div.colorx {
+				color: rgb(136, 0, 0);
+			}
+
+			#board {
+				grid-area: 1 / 1 / span 1 / span 1;
+			}
+			.overlay {
+				grid-area: 1 / 1 / span 1 / span 1;
+				height: 100%;
+				width: 100%;
+				z-index: 2;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(32, 32, 32, 0.9);
+				display: none;
+			}
+			.overlay button {
+				align-self: start;
+				width: 10vw;
+				height: 10vh;
+				font-size: 1.5rem;
+				color: white;
+				background-color: rgba(0, 0, 0, 0.6);
+				border: 2px solid black;
+				text-align: center;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			.overlay button:hover {
+				background-color: rgba(0, 0, 0, 0.9);
+			}
+
+			.show {
+				display: inline;
+			}
+
+			.message {
+				color: white;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="overlay" class="overlay">
+			<div class="message">
+				<h1 id="result-message"></h1>
+				<button onclick="restart()">RESTART</button>
+			</div>
+		</div>
+
+		<div id="board"></div>
+
+		<script type="text/javascript">
+			// hjelpevariabler for view og controller
+			let boardDiv = document.getElementById("board");
+			let overlay = document.getElementById("overlay");
+			let resultMessage = document.getElementById("result-message");
+			var win = "";
+
+			// model
+			let board = ["", "", "", "", "", "", "", "", ""];
+
+			// view
+			show();
+			function show(restart) {
+				let html = "";
+				for (let i = 0; i < 9; i++) {
+					let first = i % 3 == 0 ? "first" : "";
+					html += `<div onclick="setX(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
+				}
+
+				boardDiv.innerHTML = html;
+
+				if (restart) {
+					overlay.classList.remove("show");
+					console.log(restart);
+				}
+
+				if (win == "x" || win == "o" || win == "tie") {
+					if (win == "x") {
+						resultMessage.innerText = "X Wins!";
+						overlay.classList.add("show");
+					} else if (win == "o") {
+						resultMessage.innerText = "O Wins!";
+						overlay.classList.add("show");
+					} else if (win == "tie") {
+						resultMessage.innerText = "It's a tie!";
+						overlay.classList.add("show");
+					}
+				}
+			}
+
+			// controller
+			function setX(index) {
+				if (board[index] === "" && win == "") {
+					let blankIndexes = Array.from(board.keys()).filter((cell) => board[cell] === "");
+					console.log(blankIndexes);
+					board[index] = "x";
+					checkWin();
+
+					if (win == "x") {
+						console.log("X Winner!");
+					} else if (blankIndexes.length == 1 && win == "") {
+						console.log("Its a tie!");
+						win = "tie";
+					} else {
+						setO();
+					}
+				}
+				show();
+			}
+
+			function setO() {
+				let blankIndexes = Array.from(board.keys()).filter((cell) => board[cell] === "");
+				if (blankIndexes.length === 0) return;
+				let random = Math.floor(Math.random() * blankIndexes.length);
+				let blankIndex = blankIndexes[random];
+
+				if (win == "") {
+					board[blankIndex] = "o";
+					checkWin();
+					if (win == "o") {
+						console.log("O WInner!");
+					}
+				}
+				show();
+			}
+
+			function restart() {
+				board = ["", "", "", "", "", "", "", "", ""];
+				win = "";
+				show(true);
+			}
+
+			function checkWin(player) {
+				//check rows
+				//First Row
+				let row = "";
+				for (let i = 0; i < board.length - 6; i++) {
+					const cell = board[i];
+					row += cell;
+					if (row.length == 3 && (row == "xxx" || row == "ooo") && win == "") {
+						win = row == "xxx" ? "x" : "o";
+					}
+				}
+				//Second Row
+				row = "";
+				for (let i = 3; i < board.length - 3; i++) {
+					const cell = board[i];
+					row += cell;
+					if (row.length == 3 && (row == "xxx" || row == "ooo") && win == "") {
+						win = row == "xxx" ? "x" : "o";
+					}
+				}
+				//Third Row
+				row = "";
+				for (let i = 6; i < board.length; i++) {
+					const cell = board[i];
+					row += cell;
+					if (row.length == 3 && (row == "xxx" || row == "ooo") && win == "") {
+						win = row == "xxx" ? "x" : "o";
+					}
+				}
+
+				//Check Column
+				//First Column
+				let column = "";
+				for (let i = 0; i <= board.length - 1; i += 3) {
+					const cell = board[i];
+					column += cell;
+					if (column.length == 3 && (column == "xxx" || column == "ooo") && win == "") {
+						win = column == "xxx" ? "x" : "o";
+					}
+				}
+				column = "";
+				for (let i = 1; i <= board.length - 1; i += 3) {
+					const cell = board[i];
+					column += cell;
+					if (column.length == 3 && (column == "xxx" || column == "ooo") && win == "") {
+						win = column == "xxx" ? "x" : "o";
+					}
+				}
+				column = "";
+				for (let i = 2; i <= board.length - 1; i += 3) {
+					const cell = board[i];
+					column += cell;
+					if (column.length == 3 && (column == "xxx" || column == "ooo") && win == "") {
+						win = column == "xxx" ? "x" : "o";
+					}
+				}
+
+				//Diagonals
+				//First Diagonal
+				let diagonal = "";
+				for (let i = 0; i <= board.length - 1; i += 4) {
+					const cell = board[i];
+					diagonal += cell;
+					if (diagonal.length == 3 && (diagonal == "xxx" || diagonal == "ooo") && win == "") {
+						win = diagonal == "xxx" ? "x" : "o";
+					}
+				}
+				diagonal = "";
+				//Second Diagonal
+				for (let i = 2; i <= board.length - 3; i += 2) {
+					const cell = board[i];
+					diagonal += cell;
+					if (diagonal.length == 3 && (diagonal == "xxx" || diagonal == "ooo") && win == "") {
+						win = diagonal == "xxx" ? "x" : "o";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

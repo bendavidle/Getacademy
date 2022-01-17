@@ -1,0 +1,57 @@
+<head>
+	<style>
+		.backgroundcolor {
+			background-color: blueviolet;
+		}
+		.border {
+			border: 5px solid red;
+		}
+		.margin {
+			margin: 20px;
+		}
+		.color {
+			color: peru;
+		}
+		.radius {
+			border-radius: 10px;
+		}
+
+		.chosen {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<div id="bla" onclick="divCheck(this)">Bla bla bla</div>
+	<div id="bla1" onclick="divCheck(this)">Bla bla bla</div>
+	<div id="bla2" onclick="divCheck(this)">Bla bla bla</div>
+	<div id="bla3" onclick="divCheck(this)">Bla bla bla</div>
+	<div id="bla4" onclick="divCheck(this)">Bla bla bla</div>
+
+	<label for=""></label>
+	<input id="backgroundcolor" type="checkbox" onchange="toggleStyle(this)" />
+	<input id="border" type="checkbox" onchange="toggleStyle(this)" />
+	<input id="margin" type="checkbox" onchange="toggleStyle(this)" />
+	<input id="color" type="checkbox" onchange="toggleStyle(this)" />
+	<input id="radius" type="checkbox" onchange="toggleStyle(this)" />
+
+	<script>
+		var selectedDiv = document.getElementById("bla");
+
+		function toggleStyle(check) {
+			selectedDiv.classList.toggle(check.id);
+		}
+
+		function divCheck(div) {
+			selectedDiv.classList.remove("chosen");
+			selectedDiv = div;
+			div.classList.toggle("chosen");
+
+			backgroundcolor.checked = selectedDiv.classList.contains("backgroundcolor");
+			border.checked = selectedDiv.classList.contains("border");
+			margin.checked = selectedDiv.classList.contains("margin");
+			color.checked = selectedDiv.classList.contains("color");
+			radius.checked = selectedDiv.classList.contains("radius");
+		}
+	</script>
+</body>

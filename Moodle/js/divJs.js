@@ -42,14 +42,3 @@ function drawRandomDiv(width, height, borderWidth) {
 
 drawRandomDiv(randomNumber(1, 1000), randomNumber(1, 1000), randomNumber(1, 20));
 drawDiv(divWidth, divHeight);
-
-var selectedDiv = null;
-
-function checkStyles(element) {
-	selectedDiv = element;
-	element.classList.toggle("selected");
-}
-
-function toggleStyle() {
-	console.log(selectedDiv);
-}
