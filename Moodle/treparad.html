@@ -122,7 +122,6 @@
 
 				if (restart) {
 					overlay.classList.remove("show");
-					console.log(restart);
 				}
 
 				if (win == "x" || win == "o" || win == "tie") {
@@ -148,7 +147,6 @@
 					checkWin();
 
 					if (blankIndexes.length == 1 && win == "") {
-						console.log("Its a tie!");
 						win = "tie";
 					} else {
 						setO();
@@ -176,7 +174,7 @@
 				show(true);
 			}
 
-			function checkWin(player) {
+			function checkWin() {
 				//check rows
 				//First Row
 				let row = "";
