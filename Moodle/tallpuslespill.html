@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Søke Start IT</title>
+		<style>
+			.cell {
+				color: blue;
+				background-color: azure;
+				padding: 10px;
+				margin: 10px;
+				border: solid cornflowerblue 5px;
+				width: 20px;
+				height: 20px;
+				float: left;
+			}
+
+			div.firstInLine {
+				clear: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script>
+			//Model
+			var boardSize = 9;
+			var boardArray = shuffle(createArray(boardSize));
+			//View
+			show();
+			function show() {
+				const app = document.getElementById("app");
+				app.innerHTML = "";
+
+				for (let i = 0; i < boardSize; i++) {
+					if (boardArray[i] == "0") {
+						if (i % 3 == 0) {
+							app.append(createCell("", true));
+						} else {
+							app.append(createCell("", false));
+						}
+					} else {
+						if (i % 3 == 0) {
+							app.append(createCell(boardArray[i], true));
+						} else {
+							app.append(createCell(boardArray[i], false));
+						}
+					}
+				}
+
+				function createCell(index, firstInLine) {
+					let cellHtml = document.createElement("div");
+					cellHtml.innerText = index;
+					cellHtml.classList.add("cell");
+					cellHtml.addEventListener("click", function () {
+						cellClick(this);
+					});
+
+					if (firstInLine) {
+						cellHtml.classList.add("firstInLine");
+					}
+
+					return cellHtml;
+				}
+			}
+
+			//Controller
+			function cellClick(cell) {
+				let emptyCell = getEmptyCellIndex(boardArray);
+				let currentCell = getCellIndex(cell.innerText, boardArray);
+
+				console.log("Current Cell: " + currentCell + " Empty Cell: " + emptyCell);
+				//Is cell in range of empty cell
+				if (currentCell - 3 == emptyCell || currentCell + 3 == emptyCell || currentCell + 1 == emptyCell || currentCell - 1 == emptyCell) {
+					if (cell.classList.contains("firstInLine")) {
+						if (currentCell + 1 == emptyCell || currentCell - 3 == emptyCell || currentCell + 3 == emptyCell) {
+							swapArrValues(boardArray, currentCell, emptyCell);
+						}
+					} else if (getCellElement(emptyCell).classList.contains("firstInLine")) {
+						// console.log("Empty cell is first in Row");
+						if (currentCell - 1 == emptyCell || currentCell - 3 == emptyCell || currentCell + 3 == emptyCell) {
+							swapArrValues(boardArray, currentCell, emptyCell);
+						}
+					} else {
+						swapArrValues(boardArray, currentCell, emptyCell);
+					}
+					checkWin();
+					show();
+				}
+			}
+
+			function checkWin() {
+				if (boardArray.toString() === "1,2,3,4,5,6,7,8,0") {
+					console.log("Winner!");
+				}
+			}
+
+			function getEmptyCellIndex(array) {
+				for (let i = 0; i < array.length; i++) {
+					const cell = array[i];
+					if (cell == "0") {
+						return i;
+					}
+				}
+			}
+
+			function getCellIndex(cellContent, array) {
+				for (let i = 0; i < array.length; i++) {
+					const cell = array[i];
+					if (cell == cellContent) {
+						return i;
+					}
+				}
+			}
+
+			function getCellElement(index) {
+				let cells = document.getElementById("app").children;
+				return cells[index];
+			}
+
+			function createArray(arraySize) {
+				let array = [];
+				for (let i = 0; i < arraySize; i++) {
+					array.push(i.toString());
+				}
+				return array;
+			}
+
+			function swapArrValues(array, i1, i2) {
+				[array[i1], array[i2]] = [array[i2], array[i1]];
+				boardArray = array;
+			}
+
+			function shuffle(array) {
+				for (let i = array.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[array[i], array[j]] = [array[j], array[i]];
+				}
+				return array;
+			}
+		</script>
+	</body>
+</html>
