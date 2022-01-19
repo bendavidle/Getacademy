@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reaction Time</title>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				background-color: rgba(34, 34, 34, 1);
+			}
+			#app {
+				display: grid;
+				grid-template-columns: repeat(5, 5vw);
+				justify-content: space-around;
+				grid-auto-flow: row;
+				height: 100%;
+			}
+			.circle {
+				justify-self: center;
+				align-self: center;
+				border-radius: 50%;
+				background-color: red;
+				width: 15vh;
+				height: 15vh;
+			}
+
+			.lightOn {
+				background-color: yellow;
+			}
+
+			.circle:hover {
+				box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body onload="appLoaded()">
+		<div id="app"></div>
+		<script>
+			//Model
+			var circleAmount = 25;
+			var selectedLampIndex = randomLamp(circleAmount);
+			var startTime;
+			//View
+			updateView();
+			function updateView() {
+				const app = document.getElementById("app");
+				app.innerHTML = "";
+				for (let i = 0; i < circleAmount; i++) {
+					if (i == selectedLampIndex) {
+						app.append(createCircle(true));
+					} else {
+						app.append(createCircle());
+					}
+				}
+
+				function createCircle(light) {
+					let circle = document.createElement("div");
+					if (light) {
+						circle.classList.add("lightOn");
+					}
+					circle.onclick = function () {
+						buttonClick(this);
+					};
+					circle.classList.add("circle");
+					return circle;
+				}
+			}
+			//Controller
+			function randomLamp(max) {
+				let randomIndex = 1 + Math.floor(Math.random() * (max - 1 + 1));
+				return randomIndex - 1;
+			}
+
+			function buttonClick(button) {
+				let isLight = button.classList.contains("lightOn");
+				if (isLight) {
+					let endTime = new Date().getTime();
+					console.log(getTimeTaken(startTime, endTime));
+					selectedLampIndex = randomLamp(circleAmount);
+					updateView();
+					startTime = new Date().getTime();
+				}
+			}
+
+			function getTimeTaken(sTime, eTime) {
+				let spentMilliseconds = Math.floor(eTime - sTime);
+				let spentSeconds = spentMilliseconds / 1000;
+				return spentSeconds.toString() + " seconds";
+			}
+
+			function appLoaded() {
+				startTime = new Date().getTime();
+			}
+		</script>
+	</body>
+</html>
