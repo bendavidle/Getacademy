@@ -17,3 +17,5 @@ Forskjellige oppgaver osv for Getacademy
 [Ferdighet 9f](https://bengetacademy.github.io/Getacademy/Moodle/ferdighet9f.html)
 
 [Tic Tac Toe](https://bengetacademy.github.io/Getacademy/Moodle/treparad.html)
+
+[Reaction Time](https://bengetacademy.github.io/Getacademy/Moodle/reactiontime.html)
