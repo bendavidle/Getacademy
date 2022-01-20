@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TEAM Oppgave Uke 3</title>
+		<style>
+			html,
+			body {
+				font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				margin: 0;
+				background-color: rgb(196, 159, 100);
+			}
+
+			img {
+				max-width: 20vh;
+				max-height: 20vh;
+				cursor: pointer;
+			}
+
+			.shop {
+				float: left;
+				width: 100%;
+				background-color: rgb(180, 162, 134);
+			}
+
+			.item {
+				display: inline-block;
+				height: 20vh;
+				width: 20vh;
+			}
+
+			.invbutton {
+				float: left;
+				clear: left;
+			}
+
+			.luksus {
+				position: fixed;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				min-width: 2000px;
+				min-height: 1333px;
+				display: none;
+			}
+
+			.luksustekst {
+				position: fixed;
+				z-index: 9999;
+				top: 15%;
+				left: 40%;
+				display: none;
+				color: black;
+				font-size: 3rem;
+			}
+
+			.kontroll {
+				display: none;
+			}
+
+			.show {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="shop">
+			<center>
+				<h1>Shop</h1>
+
+				<div class="item">
+					<p>Bow 15 Gold</p>
+					<img id="bow" class="" src="https://www.pngpix.com/wp-content/uploads/2016/07/PNGPIX-COM-Recurve-Bow-PNG-Transparent-Image.png" alt="bow" onclick="itemClick(this)" />
+				</div>
+				<div class="item">
+					<p>Arrows 3 Gold</p>
+					<img id="arrows" class="" src="http://img2.wikia.nocookie.net/__cb20120612185712/elderscrolls/images/3/3b/SteelArrow_SK.png" alt="arrow" onclick="itemClick(this)" />
+				</div>
+				<div class="item">
+					<p>Potion 8 Gold</p>
+					<img id="potion" class="" src="https://officialpsds.com/imageview/r8/wp/r8wp9m_large.png?1521316568" alt="potion" onclick="itemClick(this)" />
+				</div>
+			</center>
+			<p id="kontroll" class="kontroll" style="padding-left: 10px">Har du kontroll på økonomien din?</p>
+			<p id="goldcount" style="padding-left: 10px; color: gold">0 Gold Spent</p>
+			<button class="invbutton" onclick="showInventory()">Show Backpack</button>
+			<img id="luksus" class="luksus" src="https://g.acdn.no/obscura/API/dynamic/r1/nadp/tr_2000_2000_s_f/0000/2016/01/18/3423181635/1/original/2409383.jpg?chk=F29164" alt="" />
+			<h1 id="luksustekst" class="luksustekst">Eg blir rett og slett økonomisk sjøsyk!!!</h1>
+		</div>
+
+		<div id="inventory"></div>
+
+		<script>
+			var inventory = document.getElementById("inventory");
+			var goldcount = document.getElementById("goldcount");
+			var luksus = document.getElementById("luksus");
+			var luksustekst = document.getElementById("luksustekst");
+			var kontroll = document.getElementById("kontroll");
+			var backpack = "";
+			var bowcost = 15;
+			var arrowcost = 3;
+			var potioncost = 8;
+			var goldspent = 0;
+
+			function itemClick(item) {
+				backpack += createImg(item.src);
+				if (goldspent >= 30) {
+					kontroll.classList.add("show");
+				}
+				updategold(item.id);
+			}
+
+			function showInventory() {
+				inventory.innerHTML = backpack;
+
+				if (goldspent > 100) {
+					luksus.classList.add("show");
+					luksustekst.classList.add("show");
+				}
+			}
+
+			function createImg(src) {
+				let img = `<img src="${src}">`;
+				return img;
+			}
+
+			function updategold(item) {
+				if (item == "potion") {
+					goldspent += potioncost;
+				} else if (item == "bow") {
+					goldspent += bowcost;
+				} else if ((item = "arrows")) {
+					goldspent += arrowcost;
+				}
+				goldcount.innerHTML = goldspent + " Gold Spent";
+			}
+		</script>
+	</body>
+</html>
