@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Oppgave Uke 4</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Tinos');
+
+        html,
+        body {
+            margin: 0;
+            background: url('https://www.wallpaperflare.com/static/552/639/784/landscape-brown-concrete-troll-wallpaper.jpg');
+        }
+
+        button {
+            border-radius: 50%;
+            border-color: rgb(255, 225, 0);
+            border-style: solid;
+            font-family: sans-serif;
+            font-size: 18px;
+            color: black;
+            width: 100px;
+            height: 50px;
+            background-color: #f0ad048a;
+            color: white;
+            text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000, 1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
+        }
+
+        button:hover {
+            background-color: #cc9201;
+        }
+
+        /*https://cssgradient.io*/
+        h2 {
+            font-family: Tinos;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(185, 185, 185, 0.8) 0%, rgba(9, 121, 1, 0) 100%);
+            margin: 0;
+            padding: 1rem;
+            color: white;
+            text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000, 1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
+        }
+
+        .ord {
+            color: rgb(219, 205, 0);
+        }
+
+        .chosen {
+            text-decoration: underline;
+            color: gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+
+        // model
+
+        //ord
+        let ord1 = "______";
+        let ord2 = "______";
+        let ord3 = "______";
+        let ord4 = "______";
+        let ord5 = "______";
+        let ord6 = "______";
+
+        let valgtOrd;
+
+
+        // view
+        show();
+        function show() {
+            const html = document.getElementById('app').innerHTML = /*html*/`
+        <h2>
+            Det var en gang et <span class="ord" onclick="velgOrd(this, 1)">${ord1}</span>
+            troll som bodde langt ute i den <span class="ord" onclick="velgOrd(this, 2)">${ord2}</span> skogen. <br />
+            Plutselig skled trollet på en <span class="ord" onclick="velgOrd(this, 3)">${ord3}</span> stein. <br />
+            Trollet falt rett ned i den <span class="ord" onclick="velgOrd(this, 4)">${ord4}</span> fossen og ble slukt av en
+            <span class="ord" onclick="velgOrd(this, 5)">${ord5}</span> fisk. <br />
+            Snipp snapp snute, så er dette <span class="ord" onclick="velgOrd(this, 6)">${ord6}</span> eventyret ute.
+        </h2>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <center>
+            <button onclick="buttonClick(this)">skummelt</button>
+            <button onclick="buttonClick(this)">stygt</button>
+            <button onclick="buttonClick(this)">store</button>
+            <button onclick="buttonClick(this)">mørke</button>
+            <button onclick="buttonClick(this)">tykke</button>
+            <button onclick="buttonClick(this)">dype</button>
+
+            <br>
+            <br>
+
+            <button onclick="buttonClick(this)">glatt</button>
+            <button onclick="buttonClick(this)">spiss</button>
+            <button onclick="buttonClick(this)">våte</button>
+            <button onclick="buttonClick(this)">sterke</button>
+            <button onclick="buttonClick(this)">lange</button>
+            <button onclick="buttonClick(this)">brusende</button>
+
+            <br>
+            <br>
+
+            <button onclick="buttonClick(this)">enorm</button>
+            <button onclick="buttonClick(this)">sulten</button>
+            <button onclick="buttonClick(this)">hissig</button>
+            <button onclick="buttonClick(this)">teite</button>
+            <button onclick="buttonClick(this)">fantastiske</button>
+            <button onclick="buttonClick(this)">dumme</button>
+        </center>
+            `;
+        }
+
+        // controller
+        function buttonClick(adjektiv) {
+            console.log(adjektiv.innerHTML, " Valgt Ord: " + valgtOrd);
+            if (valgtOrd == 1) {
+                ord1 = adjektiv.innerHTML;
+            }
+            else if (valgtOrd == 2) {
+                ord2 = adjektiv.innerHTML;
+            }
+
+            else if (valgtOrd == 3) {
+                ord3 = adjektiv.innerHTML;
+            }
+
+            else if (valgtOrd == 4) {
+                ord4 = adjektiv.innerHTML;
+            }
+
+            else if (valgtOrd == 5) {
+                ord5 = adjektiv.innerHTML;
+            }
+
+            else if (valgtOrd == 6) {
+                ord6 = adjektiv.innerHTML;
+            }
+            valgtOrd = 0;
+            show();
+        }
+
+        function velgOrd(ord, One) {
+            console.log(ord);
+            valgtOrd = One;
+            ord.classList.toggle('chosen');
+        }
+
+    </script>
+</body>
+
+</html>
