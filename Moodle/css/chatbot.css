@@ -37,7 +37,6 @@ html {
 
 .chatlog p {
 	font-size: 1.5rem;
-	color: white;
 }
 
 .input {
@@ -58,4 +57,14 @@ html {
 
 .input input:focus {
 	outline: none;
+}
+
+.response {
+	color: #8b8b8b;
+	text-align: right;
+}
+
+.sent {
+	color: rgb(215, 215, 255);
+	text-align: left;
 }

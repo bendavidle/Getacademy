@@ -20,7 +20,12 @@ function show() {
 	const input = document.querySelector("#chat");
 	input.focus();
 	for (let i = 0; i < chatContent.length; i++) {
-		const msg = `<p>${chatContent[i]}</p>`;
+		let msg = "";
+		if ((i + 1) % 2 == 0) {
+			msg = `<p class="response">${chatContent[i]}</p>`;
+		} else {
+			msg = `<p class="sent">${chatContent[i]}</p>`;
+		}
 		chatLog.innerHTML += msg;
 	}
 	chatLog.scrollTop = chatLog.scrollHeight - chatLog.clientHeight;
