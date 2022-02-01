@@ -1,0 +1,61 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body,
+html {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #323232;
+	height: 100%;
+}
+
+.chat {
+	display: grid;
+	grid-template-rows: 5vh 35vh 10vh 50vh;
+	grid-template-columns: 20vw 60vw 20vw;
+}
+
+.header {
+	grid-row: 1 / span 1;
+	grid-column: 2 / span 1;
+	text-align: center;
+	color: #4e4e4e;
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+.chatlog {
+	grid-column: 2 / span 1;
+	grid-row: 2 / span 1;
+	text-align: center;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.chatlog p {
+	font-size: 1.5rem;
+	color: white;
+}
+
+.input {
+	grid-column: 2 / span 1;
+	grid-row: 3 / span 1;
+}
+
+.input input {
+	color: white;
+	font-size: 3rem;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	border-radius: 10px;
+	border: none;
+	background-color: #242424;
+}
+
+.input input:focus {
+	outline: none;
+}
