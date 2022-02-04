@@ -9,7 +9,7 @@ function checkIfEmail(email) {
 			return false;
 		} else if (email.includes("@")) {
 			if (email.includes(".")) {
-				if (email.charAt(email.indexOf("@") - 1) == "." || email.charAt(email.indexOf("@") + 1) == ".") {
+				if (email.charAt(email.indexOf("@") + 1) == ".") {
 					return false;
 				} else {
 					return true;
